@@ -6,17 +6,31 @@
         xmlns:local="clr-namespace:SalayV2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="NoNavigate">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=MainFrame, Path=CanGoBack}" Value="False">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Frame x:Name="MainFrame" Grid.Row="2" Navigated="SetTitle" NavigationUIVisibility="Hidden" Source="/SalayV2;component/LogInFolder/LogInPage.xaml"></Frame>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
             </Grid.RowDefinitions>
+            <Image Source="logo.png" />
+            <Button Grid.Row="2" Style="{StaticResource NoNavigate}" Click="GoBack">Назад</Button>
+            <Button Grid.Row="3" Style="{StaticResource NoNavigate}" Background="#FFFFF6A5" Click="ExitThis">Выход</Button>
         </Grid>
     </Grid>
 </Window>

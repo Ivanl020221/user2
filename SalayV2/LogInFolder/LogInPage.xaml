@@ -9,6 +9,17 @@
       Title="LogInPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock>Логин</TextBlock>
+        <TextBox Grid.Row="1" Name="log"></TextBox>
+        <TextBlock Grid.Row="2">Пароль</TextBlock>
+        <PasswordBox x:Name="pass" Grid.Row="3"></PasswordBox>
+        <Button Grid.Row="4" Click="LogIn">Войти</Button>
     </Grid>
 </Page>

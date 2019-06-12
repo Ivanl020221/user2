@@ -20,9 +20,22 @@ namespace SalayV2.LogInFolder
     /// </summary>
     public partial class LogInPage : Page
     {
+        DataBaseCode.ModelDB ModelDB = new DataBaseCode.ModelDB();
+
         public LogInPage()
         {
             InitializeComponent();
+        }
+
+        private void LogIn(object sender, RoutedEventArgs e)
+        {
+            if (ModelDB.manager.Where(i => i.login == log.Text && i.password == pass.Password).Count() > 0)
+            { NavigationService.Navigate(new Main.ManagerMain()); return; }
+
+            if (ModelDB.executor.Where(i => i.login == log.Text && i.password == pass.Password).Count() > 0)
+            { NavigationService.Navigate(new Main.ExecutorMain()); return; }
+
+            MessageBox.Show("Не верный логин или пароль", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }
